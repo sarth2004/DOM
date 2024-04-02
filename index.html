@@ -4,8 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        input, button {
+            margin: 5px;
+      }
+
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+      }
+      label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>BMI Calculator</h1>
+    <div>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight">
+    </div>
+    <div>
+        <label for="height">Height (m):</label>
+        <input type="number" id="height">
+    </div>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value);
+            var resultElement = document.getElementById("result");
+
+            if (weight && height) {
+                var bmi = weight / (height * height);
+                resultElement.textContent = "Your BMI is: " + bmi.toFixed(2);
+            } else {
+                resultElement.textContent = "Please enter both weight and height.";
+            }
+        }
+    </script>
 </body>
 </html>
